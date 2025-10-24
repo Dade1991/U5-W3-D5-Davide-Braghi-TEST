@@ -2,6 +2,7 @@ package davidebraghi.U5_W3_D5_Davide_Braghi_TEST.entities;
 
 import davidebraghi.U5_W3_D5_Davide_Braghi_TEST.enums.ReservationStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

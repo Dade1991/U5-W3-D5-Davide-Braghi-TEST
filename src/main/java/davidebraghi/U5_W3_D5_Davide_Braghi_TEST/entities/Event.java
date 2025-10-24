@@ -2,6 +2,7 @@ package davidebraghi.U5_W3_D5_Davide_Braghi_TEST.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +25,6 @@ public class Event {
     @Column(nullable = false)
     private LocalDateTime startDateTime;
     @Column(nullable = false)
-    private LocalDateTime endDateTime;
-    @Column(nullable = false)
     private Integer totalSeats;
     @Column(nullable = false)
     private Integer remainingSeats;
@@ -33,4 +33,15 @@ public class Event {
     private User organizer; // perchè SOLO l'organizer potrà creare un evento, non uno user che dovrà passare per la prenotazione.
     @Column
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    public Event(String title,
+                 String description,
+                 LocalDateTime startDateTime,
+                 Integer totalSeats
+    ) {
+        this.title = title;
+        this.description = description;
+        this.startDateTime = startDateTime;
+        this.totalSeats = totalSeats;
+    }
 }

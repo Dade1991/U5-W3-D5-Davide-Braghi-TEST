@@ -5,6 +5,5 @@ import java.time.LocalDateTime;
 public record NewEventDTO(String title,
                           String description,
                           LocalDateTime startDateTime,
-                          LocalDateTime endDateTime,
                           Integer totalSeats) {
 }

@@ -1,8 +1,10 @@
 package davidebraghi.U5_W3_D5_Davide_Braghi_TEST.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import davidebraghi.U5_W3_D5_Davide_Braghi_TEST.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -11,6 +13,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@JsonIgnoreProperties({"password", "authorities", "enabled", "accountNonLocked", "accountNonExpired", "credentialsNonExpired"})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +32,18 @@ public class User {
     @Enumerated
     @Column(nullable = false)
     private Role role;
+
+    public User(String username,
+                String email,
+                String name,
+                String surname,
+                String password,
+                Role role) {
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.role = Role.USER_TEST;
+    }
 }
