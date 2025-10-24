@@ -2,8 +2,8 @@ package davidebraghi.U5_W3_D5_Davide_Braghi_TEST.entities;
 
 import davidebraghi.U5_W3_D5_Davide_Braghi_TEST.enums.ReservationStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
+@NoArgsConstructor
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,14 @@ public class Reservation {
     private User user;
     @Enumerated
     @Column(nullable = false)
-    private ReservationStatus status = ReservationStatus.PENDING;
+    private ReservationStatus status;
     @Column
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    public Reservation(ReservationStatus status,
+                       LocalDateTime createdAt
+    ) {
+        this.status = status;
+        this.createdAt = createdAt;
+    }
 }
