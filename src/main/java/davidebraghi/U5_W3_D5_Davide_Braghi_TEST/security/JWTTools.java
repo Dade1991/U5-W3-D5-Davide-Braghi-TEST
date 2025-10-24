@@ -34,4 +34,12 @@ public class JWTTools {
             throw new UnauthorizedException("Error has occured with Token. Try again.");
         }
     }
+
+    public Long extractIdFromToken(String accessToken) {
+        return Long.valueOf(Jwts.parser()
+                .verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build()
+                .parseSignedClaims(accessToken)
+                .getPayload()
+                .getSubject());
+    }
 }
